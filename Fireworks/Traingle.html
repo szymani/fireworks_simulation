@@ -1,0 +1,52 @@
+<html>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        const float multiplier = 0.03;
+        const float gravity = 0.0001;
+        attribute vec4 speed;
+        attribute float time;
+        attribute vec4 initPos;
+
+        void main(){
+            gl_PointSize = 5.0;
+            gl_Position = initPos + speed * time * multiplier - vec4(0,1,0,0) * (0.5*gravity*time*time);
+        }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec4 var_color;
+
+        void main() {
+            gl_FragColor = var_color;
+        }
+    </script>
+
+    <script id="vertex-shader-line" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+
+        void main(){
+            gl_Position = vPosition;
+        }
+    </script>
+    <script id="fragment-shader-line" type="x-shader/x-fragment">
+        precision mediump float;
+
+        void main() {
+            gl_FragColor = vec4(1,1,1,1);
+        }
+    </script>    
+
+    <script type="text/javascript" src="../Common/webgl-utils.js"></script> 
+    <script type="text/javascript" src="../Common/initShaders.js"></script> 
+    <script type="text/javascript" src="../Common/MV.js"></script> 
+    <script type="text/javascript" src="Firework.js"></script> 
+    <script type="text/javascript" src="triangle.js"></script> 
+
+
+    <body> 
+        <title>Fireworks</title> 
+        <canvas id="gl-canvas" width="1024" height="768"> 
+        Oops... your browser doesn't support the HTML5 canvas element" 
+        </canvas> 
+    </body> 
+
+</html>
